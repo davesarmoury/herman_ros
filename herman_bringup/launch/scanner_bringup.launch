@@ -1,0 +1,26 @@
+<launch>
+  <include file="$(find herman_description)/launch/helmet_scanner_description.launch"/>
+
+  <arg name="prefix" default="ur_arm_"/>
+  <arg name="robot_ip" default="192.168.131.40"/>
+  <arg name="servoj_time" default="0.008" />
+
+  <node name="ur_driver" pkg="ur_modern_driver" type="ur_driver" output="screen">
+    <param name="prefix" type="str" value="$(arg prefix)" />
+    <param name="robot_ip_address" type="str" value="$(arg robot_ip)" />
+    <param name="servoj_time" type="double" value="$(arg servoj_time)" />
+  </node>
+
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server" respawn="true">
+    <param name="buffer_size" value="120.0"/>
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <node name="scan_to_cloud" pkg="herman_utilities" type="scan_to_cloud" />
+
+  <node pkg="urg_node" name="hokuyo" type="urg_node">
+    <param name="ip_address" value="192.168.131.20" />
+    <param name="frame_id" value="laser" />
+  </node>
+</launch>

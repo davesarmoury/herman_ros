@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>herman_bringup</name>
+  <version>0.0.0</version>
+  <description>The herman_bringup package</description>
+
+  <maintainer email="davesarmoury@gmail.com">Dave Niewinski</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>nodelet</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ur_bringup</exec_depend>
+  <exec_depend>ur_modern_driver</exec_depend>
+  <exec_depend>urg_node</exec_depend>
+
+  <export>
+  </export>
+</package>

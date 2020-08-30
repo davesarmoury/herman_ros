@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>herman_viz</name>
+  <version>0.0.0</version>
+  <description>The herman_viz package</description>
+
+  <maintainer email="davesarmoury@gmail.com">Dave Niewinski</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+
+  <export>
+  </export>
+</package>

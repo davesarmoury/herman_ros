@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="herman">
+
+  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro" />
+  <link name="world" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="ur_arm_base_link" />
+    <origin xyz="0 0 0" rpy="3.14159 0 0"/>
+  </joint>
+
+  <xacro:ur3_robot prefix="ur_arm_" joint_limited="true"/>
+
+  <joint name="UST_bracket_joint" type="fixed">
+    <parent link="ur_arm_tool0" />
+    <child link="UST_bracket_Link" />
+    <origin xyz="0 0 0" rpy="0 -1.5707 -1.5707"/>
+  </joint>
+
+  <link name="UST_bracket_Link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/UST_Mount.stl"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="UST_joint" type="fixed">
+    <parent link="UST_bracket_Link" />
+    <child link="UST_Link" />
+    <origin xyz="0.036 0 -0.0474" rpy="0 0 0"/>
+  </joint>
+
+  <link name="UST_Link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/hokuyo_ust10.stl"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="laser_joint" type="fixed">
+    <parent link="UST_Link" />
+    <child link="laser" />
+    <origin xyz="0 0 0.0474" rpy="0 0 0"/>
+  </joint>
+
+  <link name="laser" />
+</robot>

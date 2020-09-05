@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="herman">
+
+  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro" />
+
+  <link name="world" />
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="ur_arm_base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="fixture" />
+  <joint name="fixture_joint" type="fixed">
+    <parent link="world" />
+    <child link="fixture" />
+    <origin xyz="0.00078 0.28372 0.04" rpy="0 0 5.616"/>
+  </joint>
+
+  <link name="socket" />
+  <joint name="socket_joint" type="fixed">
+    <parent link="world" />
+    <child link="socket" />
+    <origin xyz="-0.17761 0.27087 0.19504" rpy="0 0 3.14159"/>
+  </joint>
+
+  <xacro:ur3_robot prefix="ur_arm_" joint_limited="true"/>
+
+  <link name="cube_centre" />
+  <joint name="cube_joint" type="fixed">
+    <parent link="ur_arm_tool0" />
+    <child link="cube_centre" />
+    <origin xyz="0 0 0.042" rpy="0 -1.5707 -1.5707"/>
+  </joint>
+</robot>

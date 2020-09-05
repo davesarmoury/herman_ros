@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: herman_description
+    relative_path: urdf/rubiks_description.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/herman.srdf
+  CONFIG:
+    author_name: Dave Niewinski
+    author_email: davesarmoury@gmail.com
+    generated_timestamp: 1599246505

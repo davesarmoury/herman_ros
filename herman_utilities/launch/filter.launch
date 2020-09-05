@@ -25,6 +25,6 @@
   <node pkg="nodelet" type="nodelet" name="outlier" args="load pcl/RadiusOutlierRemoval filter_nodelet" respawn="true" respawn_delay="5">
     <remap from="~input" to="z_pass/output" />
     <param name="radius_search" value="0.01" />
-    <param name="min_neighbors" value="10" />
+    <param name="min_neighbors" value="20" />
   </node>
 </launch>

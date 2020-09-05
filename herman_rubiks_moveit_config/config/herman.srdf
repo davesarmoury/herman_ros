@@ -1,0 +1,189 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="herman">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="manipulator">
+        <chain base_link="ur_arm_base_link" tip_link="cube_centre" />
+    </group>
+    <group_state name="left_pick" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.00692922274" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.56922847429" />
+        <joint name="ur_arm_elbow_joint" value="-1.33803302446" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.37596303621" />
+        <joint name="ur_arm_wrist_2_joint" value="1.24635159969" />
+        <joint name="ur_arm_wrist_3_joint" value="-9.56694232386e-05" />
+    </group_state>
+    <group_state name="back_pounce" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.56500369707" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.82405740419" />
+        <joint name="ur_arm_elbow_joint" value="-0.760428730642" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.69874507586" />
+        <joint name="ur_arm_wrist_2_joint" value="2.22941637039" />
+        <joint name="ur_arm_wrist_3_joint" value="-0.000167671834127" />
+    </group_state>
+    <group_state name="front_pounce" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.251246277486" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.18764955202" />
+        <joint name="ur_arm_elbow_joint" value="-2.51791412035" />
+        <joint name="ur_arm_wrist_1_joint" value="-1.58494311968" />
+        <joint name="ur_arm_wrist_2_joint" value="0.409447431564" />
+        <joint name="ur_arm_wrist_3_joint" value="-0.0168479124652" />
+    </group_state>
+    <group_state name="right_pounce" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.81104594866" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.23852092425" />
+        <joint name="ur_arm_elbow_joint" value="-2.26776391665" />
+        <joint name="ur_arm_wrist_1_joint" value="-1.77700454393" />
+        <joint name="ur_arm_wrist_2_joint" value="-2.71878058115" />
+        <joint name="ur_arm_wrist_3_joint" value="-5.99066363733e-05" />
+    </group_state>
+    <group_state name="right_lift" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.77475339571" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.21166021029" />
+        <joint name="ur_arm_elbow_joint" value="-2.39471608797" />
+        <joint name="ur_arm_wrist_1_joint" value="-1.67686540285" />
+        <joint name="ur_arm_wrist_2_joint" value="-2.56006843248" />
+        <joint name="ur_arm_wrist_3_joint" value="7.19053496141e-05" />
+    </group_state>
+    <group_state name="turn_invert" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.910413090383" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.85521537462" />
+        <joint name="ur_arm_elbow_joint" value="-1.80613166491" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.62430507341" />
+        <joint name="ur_arm_wrist_2_joint" value="3.83248567581" />
+        <joint name="ur_arm_wrist_3_joint" value="3.14159" />
+    </group_state>
+    <group_state name="back_lift" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.4761560599" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.44677335421" />
+        <joint name="ur_arm_elbow_joint" value="-1.21405822435" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.62251741091" />
+        <joint name="ur_arm_wrist_2_joint" value="2.31828927994" />
+        <joint name="ur_arm_wrist_3_joint" value="-0.000191513692037" />
+    </group_state>
+    <group_state name="turn_insert" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.910413090383" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.85521537462" />
+        <joint name="ur_arm_elbow_joint" value="-1.80613166491" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.62430507341" />
+        <joint name="ur_arm_wrist_2_joint" value="3.83248567581" />
+        <joint name="ur_arm_wrist_3_joint" value="0.0" />
+    </group_state>
+    <group_state name="turn_pounce" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.20582849184" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.81481773058" />
+        <joint name="ur_arm_elbow_joint" value="-1.85999852816" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.61231691042" />
+        <joint name="ur_arm_wrist_2_joint" value="3.53699231148" />
+        <joint name="ur_arm_wrist_3_joint" value="0.0" />
+    </group_state>
+    <group_state name="turn_counter" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.910413090383" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.85521537462" />
+        <joint name="ur_arm_elbow_joint" value="-1.80613166491" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.62430507341" />
+        <joint name="ur_arm_wrist_2_joint" value="3.83248567581" />
+        <joint name="ur_arm_wrist_3_joint" value="-1.5707" />
+    </group_state>
+    <group_state name="front_pick" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.593987290059" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.20040351549" />
+        <joint name="ur_arm_elbow_joint" value="-2.37887674967" />
+        <joint name="ur_arm_wrist_1_joint" value="-1.74669391314" />
+        <joint name="ur_arm_wrist_2_joint" value="0.0668746009469" />
+        <joint name="ur_arm_wrist_3_joint" value="0.0191638991237" />
+    </group_state>
+    <group_state name="turn_pounce_counter" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.20582849184" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.81481773058" />
+        <joint name="ur_arm_elbow_joint" value="-1.85999852816" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.61231691042" />
+        <joint name="ur_arm_wrist_2_joint" value="3.53699231148" />
+        <joint name="ur_arm_wrist_3_joint" value="-1.5707" />
+    </group_state>
+    <group_state name="right_pick" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.77475339571" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.21166021029" />
+        <joint name="ur_arm_elbow_joint" value="-2.39471608797" />
+        <joint name="ur_arm_wrist_1_joint" value="-1.67686540285" />
+        <joint name="ur_arm_wrist_2_joint" value="-2.56006843248" />
+        <joint name="ur_arm_wrist_3_joint" value="7.19053496141e-05" />
+    </group_state>
+    <group_state name="front_lift" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.598283592855" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.90687162081" />
+        <joint name="ur_arm_elbow_joint" value="-2.361287419" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.06073600451" />
+        <joint name="ur_arm_wrist_2_joint" value="0.0625767558813" />
+        <joint name="ur_arm_wrist_3_joint" value="0.0221161395311" />
+    </group_state>
+    <group_state name="left_lift" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.00694114367" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.42155820528" />
+        <joint name="ur_arm_elbow_joint" value="-1.32509977022" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.53646833101" />
+        <joint name="ur_arm_wrist_2_joint" value="1.24631559849" />
+        <joint name="ur_arm_wrist_3_joint" value="-8.37484942835e-05" />
+    </group_state>
+    <group_state name="turn_pounce_clockwise" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.20582849184" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.81481773058" />
+        <joint name="ur_arm_elbow_joint" value="-1.85999852816" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.61231691042" />
+        <joint name="ur_arm_wrist_2_joint" value="3.53699231148" />
+        <joint name="ur_arm_wrist_3_joint" value="1.5707" />
+    </group_state>
+    <group_state name="left_pounce" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.961781803762" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.75067788759" />
+        <joint name="ur_arm_elbow_joint" value="-0.921931091939" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.61054116884" />
+        <joint name="ur_arm_wrist_2_joint" value="1.29149580002" />
+        <joint name="ur_arm_wrist_3_joint" value="-9.56694232386e-05" />
+    </group_state>
+    <group_state name="turn_clockwise" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-0.910413090383" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.85521537462" />
+        <joint name="ur_arm_elbow_joint" value="-1.80613166491" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.62430507341" />
+        <joint name="ur_arm_wrist_2_joint" value="3.83248567581" />
+        <joint name="ur_arm_wrist_3_joint" value="1.5707" />
+    </group_state>
+    <group_state name="back_pick" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.47612029711" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-2.61124974886" />
+        <joint name="ur_arm_elbow_joint" value="-1.2374680678" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.43457776705" />
+        <joint name="ur_arm_wrist_2_joint" value="2.31830120087" />
+        <joint name="ur_arm_wrist_3_joint" value="-0.000167671834127" />
+    </group_state>
+    <group_state name="turn_pounce_invert" group="manipulator">
+        <joint name="ur_arm_shoulder_pan_joint" value="-1.20582849184" />
+        <joint name="ur_arm_shoulder_lift_joint" value="-1.81481773058" />
+        <joint name="ur_arm_elbow_joint" value="-1.85999852816" />
+        <joint name="ur_arm_wrist_1_joint" value="-2.61231691042" />
+        <joint name="ur_arm_wrist_2_joint" value="3.53699231148" />
+        <joint name="ur_arm_wrist_3_joint" value="3.14159" />
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="ur_arm_base_link" link2="ur_arm_shoulder_link" reason="Adjacent" />
+    <disable_collisions link1="ur_arm_ee_link" link2="ur_arm_wrist_1_link" reason="Never" />
+    <disable_collisions link1="ur_arm_ee_link" link2="ur_arm_wrist_2_link" reason="Never" />
+    <disable_collisions link1="ur_arm_ee_link" link2="ur_arm_wrist_3_link" reason="Adjacent" />
+    <disable_collisions link1="ur_arm_forearm_link" link2="ur_arm_upper_arm_link" reason="Adjacent" />
+    <disable_collisions link1="ur_arm_forearm_link" link2="ur_arm_wrist_1_link" reason="Adjacent" />
+    <disable_collisions link1="ur_arm_forearm_link" link2="ur_arm_wrist_2_link" reason="Never" />
+    <disable_collisions link1="ur_arm_shoulder_link" link2="ur_arm_upper_arm_link" reason="Adjacent" />
+    <disable_collisions link1="ur_arm_shoulder_link" link2="ur_arm_wrist_1_link" reason="Never" />
+    <disable_collisions link1="ur_arm_shoulder_link" link2="ur_arm_wrist_2_link" reason="Never" />
+    <disable_collisions link1="ur_arm_wrist_1_link" link2="ur_arm_wrist_2_link" reason="Adjacent" />
+    <disable_collisions link1="ur_arm_wrist_1_link" link2="ur_arm_wrist_3_link" reason="Never" />
+    <disable_collisions link1="ur_arm_wrist_2_link" link2="ur_arm_wrist_3_link" reason="Adjacent" />
+</robot>

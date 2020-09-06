@@ -9,10 +9,6 @@ positions["back"] = list_to_pose([0, 0, 0, 0, 0, 0])
 positions["back_up"] = list_to_pose([0, 0, approach_height, 0, 0, 0])
 positions["back_out"] = list_to_pose([-approach_offset, 0, 0, 0, 0, 0])
 positions["back_out_up"] = list_to_pose([-approach_offset, 0, approach_height, 0, 0, 0])
-positions["front"] = list_to_pose([0, 0, 0, 0, 0, 3.14159])
-positions["front_up"] = list_to_pose([0, 0, approach_height, 0, 0, 3.14159])
-positions["front_out"] = list_to_pose([approach_offset, 0, 0, 0, 0, 3.14159])
-positions["front_out_up"] = list_to_pose([approach_offset, 0, approach_height, 0, 0, 3.14159])
 positions["left"] = list_to_pose([0, 0, 0, 0, 0, 1.5707])
 positions["left_up"] = list_to_pose([0, 0, approach_height, 0, 0, 1.5707])
 positions["left_out"] = list_to_pose([0, -approach_offset, 0, 0, 0, 1.5707])
@@ -43,8 +39,10 @@ def make_moves(arm, positions):
             (plan, fraction) = arm.compute_cartesian_path(waypoints, 0.01, 0.0)
             if fraction >= 0.99:
                 print("Moving")
-                arm.execute(plan)
-                break
+                if arm.execute(plan):
+                    break
+                else:
+                    print("Execution error")
             else:
                 print("Replanning")
             count = count + 1
@@ -65,23 +63,39 @@ def get_pick_moves(side):
 
 def pick_rubik(arm, side):
     go_home(arm)
+
     arm.set_pose_reference_frame("fixture")
-    moves = get_pick_moves(side)
+    arm.go(positions[side + "_out_up"])
+
+    moves = []
+    moves.append(positions[side + "_out"])
+    moves.append(positions[side])
+    moves.append(positions[side + "_up"])
+
     make_moves(arm, moves)
 
 def place_rubik(arm, side):
     go_home(arm)
+
     arm.set_pose_reference_frame("fixture")
-    moves = get_pick_moves(side)
-    moves.reverse()
+    arm.go(positions[side + "_up"])
+
+    moves = []
+    moves.append(positions[side])
+    moves.append(positions[side + "_out"])
+    moves.append(positions[side + "_out_up"])
+
     make_moves(arm, moves)
 
 def turn_rubik(arm, amount):
     go_home(arm)
+
     arm.set_pose_reference_frame("socket")
     arm.go(positions["turn_out"])
+
     moves = []
     moves.append(positions["turn"])
     moves.append(positions["turn_" + amount])
     moves.append(positions["turn_" + amount + "_out"])
+
     make_moves(arm, moves)

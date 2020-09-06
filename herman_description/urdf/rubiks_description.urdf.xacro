@@ -14,7 +14,7 @@
   <joint name="fixture_joint" type="fixed">
     <parent link="world" />
     <child link="fixture" />
-    <origin xyz="0.00078 0.28372 0.04" rpy="0 0 5.616"/>
+    <origin xyz="0.00078 0.28372 0.05" rpy="0 0 4.0453"/>
   </joint>
 
   <link name="socket" />

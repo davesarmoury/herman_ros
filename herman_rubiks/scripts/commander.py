@@ -18,7 +18,6 @@ if __name__=='__main__':
 
     # Picks a group called "manipulator" to work with #
     arm = robot.get_group("manipulator")
-    pick_rubik(arm, "right")
-    pick_rubik(arm, "left")
-    pick_rubik(arm, "front")
     pick_rubik(arm, "back")
+    turn_rubik(arm, "clockwise")
+    place_rubik(arm, "back")

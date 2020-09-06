@@ -16,4 +16,6 @@
   </node>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <include file="$(find herman_rubiks_moveit_config)/launch/herman_rubiks_moveit_planning_execution.launch"/>
 </launch>

@@ -82,50 +82,50 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          ur_arm_base:
+          base:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          ur_arm_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          ur_arm_ee_link:
+          base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_forearm_link:
+          ee_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_shoulder_link:
+          forearm_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_tool0:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          ur_arm_upper_arm_link:
+          shoulder_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_wrist_1_link:
+          tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          upper_arm_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_wrist_2_link:
+          wrist_1_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_wrist_3_link:
+          wrist_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_3_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -191,50 +191,50 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          ur_arm_base:
+          base:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          ur_arm_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          ur_arm_ee_link:
+          base_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_forearm_link:
+          ee_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_shoulder_link:
+          forearm_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_tool0:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          ur_arm_upper_arm_link:
+          shoulder_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_wrist_1_link:
+          tool0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          upper_arm_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_wrist_2_link:
+          wrist_1_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          ur_arm_wrist_3_link:
+          wrist_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_3_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -259,25 +259,25 @@ Visualization Manager:
           Value: true
         socket:
           Value: true
-        ur_arm_base:
+        base:
           Value: false
-        ur_arm_base_link:
+        base_link:
           Value: false
-        ur_arm_ee_link:
+        ee_link:
           Value: false
-        ur_arm_forearm_link:
+        forearm_link:
           Value: false
-        ur_arm_shoulder_link:
+        shoulder_link:
           Value: false
-        ur_arm_tool0:
+        tool0:
           Value: false
-        ur_arm_upper_arm_link:
+        upper_arm_link:
           Value: false
-        ur_arm_wrist_1_link:
+        wrist_1_link:
           Value: false
-        ur_arm_wrist_2_link:
+        wrist_2_link:
           Value: false
-        ur_arm_wrist_3_link:
+        wrist_3_link:
           Value: false
         world:
           Value: false
@@ -292,18 +292,18 @@ Visualization Manager:
             {}
           socket:
             {}
-          ur_arm_base_link:
-            ur_arm_base:
+          base_link:
+            base:
               {}
-            ur_arm_shoulder_link:
-              ur_arm_upper_arm_link:
-                ur_arm_forearm_link:
-                  ur_arm_wrist_1_link:
-                    ur_arm_wrist_2_link:
-                      ur_arm_wrist_3_link:
-                        ur_arm_ee_link:
+            shoulder_link:
+              upper_arm_link:
+                forearm_link:
+                  wrist_1_link:
+                    wrist_2_link:
+                      wrist_3_link:
+                        ee_link:
                           {}
-                        ur_arm_tool0:
+                        tool0:
                           cube_centre:
                             {}
       Update Interval: 0

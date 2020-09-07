@@ -6,14 +6,14 @@
 
   <joint name="world_joint" type="fixed">
     <parent link="world" />
-    <child link="ur_arm_base_link" />
+    <child link="base_link" />
     <origin xyz="0 0 0" rpy="3.14159 0 0"/>
   </joint>
 
-  <xacro:ur3_robot prefix="ur_arm_" joint_limited="true"/>
+  <xacro:ur3_robot prefix="" joint_limited="true"/>
 
   <joint name="UST_bracket_joint" type="fixed">
-    <parent link="ur_arm_tool0" />
+    <parent link="tool0" />
     <child link="UST_bracket_Link" />
     <origin xyz="0 0 0" rpy="0 -1.5707 -1.5707"/>
   </joint>

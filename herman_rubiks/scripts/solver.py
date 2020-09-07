@@ -9,16 +9,13 @@ pub = None
 def callback(data):
     global pub
 
-    if solver_type:
-        rospy.loginfo("Solving with Kociemba")
-        msg = StringArray()
-        steps = utils.solve(data.data, 'Kociemba')
-        for s in steps:
-            msg.steps.append(str(s))
-        pub.publish(msg)
-        rospy.loginfo("Done")
-    else:
-        rospy.logerr("Invalid solver type")
+    rospy.loginfo("Solving with Kociemba")
+    msg = StringArray()
+    steps = utils.solve(data.data, 'Kociemba')
+    for s in steps:
+        msg.steps.append(str(s))
+    pub.publish(msg)
+    rospy.loginfo("Done")
 
 def solver():
     global pub

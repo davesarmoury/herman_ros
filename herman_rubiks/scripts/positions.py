@@ -18,40 +18,59 @@ positions["right_up"] = list_to_pose([0, 0, approach_height, 0, 0, -1.5707])
 positions["right_out"] = list_to_pose([0, approach_offset, 0, 0, 0, -1.5707])
 positions["right_out_up"] = list_to_pose([0, approach_offset, approach_height, 0, 0, -1.5707])
 
+positions["back_turned"] = list_to_pose([0, 0, 0, 1.5707, 0, 0])
+positions["back_turned_up"] = list_to_pose([0, 0, approach_height, 1.5707, 0, 0])
+positions["back_turned_out"] = list_to_pose([-approach_offset, 0, 0, 1.5707, 0, 0])
+positions["back_turned_out_up"] = list_to_pose([-approach_offset, 0, approach_height, 1.5707, 0, 0])
+
 positions["turn"] = list_to_pose([0, 0, 0, 0, 0, 0])
 positions["turn_clockwise"] = list_to_pose([0, 0, 0, 1.5707, 0, 0])
 positions["turn_counter"] = list_to_pose([0, 0, 0, -1.5707, 0, 0])
-positions["turn_180"] = list_to_pose([0, 0, 0, 3.14159, 0, 0])
 positions["turn_out"] = list_to_pose([-approach_offset, 0, 0, 0, 0, 0])
 positions["turn_clockwise_out"] = list_to_pose([-approach_offset, 0, 0, 1.5707, 0, 0])
 positions["turn_counter_out"] = list_to_pose([-approach_offset, 0, 0, -1.5707, 0, 0])
-positions["turn_180_out"] = list_to_pose([-approach_offset, 0, 0, 3.14159, 0, 0])
 
 home = [-1.347628694484477, -1.6605963965156643, -1.9764216397655545, -2.645967955802357, 0.0, 0.0]
 
-def make_moves(arm, positions):
+def make_moves(arm, robot, positions):
     for p in positions:
         waypoints = []
         waypoints.append(copy.deepcopy(p))
 
         count = 0
-        while count < 20:
-            (plan, fraction) = arm.compute_cartesian_path(waypoints, 0.01, 0.0)
+        while count < 40:
+            (plan, fraction) = arm.compute_cartesian_path(waypoints, 0.001, 0.0)
             if fraction >= 0.99:
-                print("Moving")
+                plan = arm.retime_trajectory(robot.get_current_state(), plan, 0.5)
                 if arm.execute(plan):
                     break
                 else:
-                    print("Execution error")
+                    print("Execution Error")
             else:
-                print("Replanning")
+                print("Planning Error")
             count = count + 1
         else:
-            print("Replanning Failure")
+            print("Failure")
 
 def go_home(arm):
     arm.go(home)
     arm.stop()
+
+def expose_up_down(arm, robot):
+    pick_rubik(arm, robot, "back")
+    place_rubik(arm, robot, "back_turned")
+
+def reset_up_down(arm, robot):
+    pick_rubik(arm, robot, "back_turned")
+    place_rubik(arm, robot, "back")
+
+def front_to_right(arm, robot):
+    pick_rubik(arm, robot, "right")
+    place_rubik(arm, robot, "back")
+
+def right_to_front(arm, robot):
+    pick_rubik(arm, robot, "back")
+    place_rubik(arm, robot, "right")
 
 def get_pick_moves(side):
     moves = []
@@ -61,9 +80,7 @@ def get_pick_moves(side):
     moves.append(positions[side + "_up"])
     return moves
 
-def pick_rubik(arm, side):
-    go_home(arm)
-
+def pick_rubik(arm, robot, side):
     arm.set_pose_reference_frame("fixture")
     arm.go(positions[side + "_out_up"])
 
@@ -72,11 +89,9 @@ def pick_rubik(arm, side):
     moves.append(positions[side])
     moves.append(positions[side + "_up"])
 
-    make_moves(arm, moves)
+    make_moves(arm, robot, moves)
 
-def place_rubik(arm, side):
-    go_home(arm)
-
+def place_rubik(arm, robot, side):
     arm.set_pose_reference_frame("fixture")
     arm.go(positions[side + "_up"])
 
@@ -85,17 +100,24 @@ def place_rubik(arm, side):
     moves.append(positions[side + "_out"])
     moves.append(positions[side + "_out_up"])
 
-    make_moves(arm, moves)
+    make_moves(arm, robot, moves)
 
-def turn_rubik(arm, amount):
-    go_home(arm)
-
+def turn_rubik(arm, robot, amount):
     arm.set_pose_reference_frame("socket")
-    arm.go(positions["turn_out"])
-
     moves = []
-    moves.append(positions["turn"])
-    moves.append(positions["turn_" + amount])
-    moves.append(positions["turn_" + amount + "_out"])
 
-    make_moves(arm, moves)
+    if "180" in amount:
+        arm.go(positions["turn_clockwise_out"])
+
+        moves.append(positions["turn_clockwise"])
+        moves.append(positions["turn_counter"])
+        moves.append(positions["turn_counter_out"])
+
+    else:
+        arm.go(positions["turn_out"])
+
+        moves.append(positions["turn"])
+        moves.append(positions["turn_" + amount])
+        moves.append(positions["turn_" + amount + "_out"])
+
+    make_moves(arm, robot, moves)

@@ -50,9 +50,9 @@
     <arg name="tool_tcp_port" value="$(arg tool_tcp_port)"/>
   </include>
 
-  <!-- include file="$(find herman_rubiks_moveit_config)/launch/herman_rubiks_moveit_planning_execution.launch"/-->
+  <include file="$(find herman_rubiks_moveit_config)/launch/herman_rubiks_moveit_planning_execution.launch"/>
 
-  <!-- node name="solver" pkg="herman_rubiks" type="solver.py" /-->
-  <!-- node name="commander" pkg="herman_rubiks" type="commander.py" /-->
+  <node name="solver" pkg="herman_rubiks" type="solver.py" />
+  <node name="commander" pkg="herman_rubiks" type="commander.py" />
 
 </launch>

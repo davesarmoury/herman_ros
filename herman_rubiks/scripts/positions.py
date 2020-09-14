@@ -32,6 +32,12 @@ positions["turn_counter_out"] = list_to_pose([-approach_offset, 0, 0, -1.5707, 0
 
 home = [-1.347628694484477, -1.6605963965156643, -1.9764216397655545, -2.645967955802357, 0.0, 0.0]
 
+camera_sides = [[-1.1330788771258753, -1.369629208241598, -2.0160892645465296, -2.8974650541888636, -2.7038405577289026, 0.0]
+, [-0.9457677046405237, -1.9701207319842737, -1.3471739927874964, -2.965806309376852, 2.19595521452, -1.5707]
+, [-0.9457677046405237, -1.9701207319842737, -1.3471739927874964, -2.965806309376852, 2.19595521452, 0]
+, [-0.9457677046405237, -1.9701207319842737, -1.3471739927874964, -2.965806309376852, 2.19595521452, 1.5707]
+, [-0.9457677046405237, -1.9701207319842737, -1.3471739927874964, -2.965806309376852, 2.19595521452, 3.14159]]
+
 def make_moves(arm, robot, positions):
     for p in positions:
         waypoints = []
@@ -41,7 +47,7 @@ def make_moves(arm, robot, positions):
         while count < 40:
             (plan, fraction) = arm.compute_cartesian_path(waypoints, 0.001, 0.0)
             if fraction >= 0.99:
-                plan = arm.retime_trajectory(robot.get_current_state(), plan, 0.5)
+                plan = arm.retime_trajectory(robot.get_current_state(), plan, 1.0)
                 if arm.execute(plan):
                     break
                 else:

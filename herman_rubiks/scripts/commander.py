@@ -30,7 +30,7 @@ def commander():
 
     # Picks a group called "manipulator" to work with #
     arm = robot.get_group("manipulator")
-    arm.set_max_velocity_scaling_factor(0.5)
+    arm.set_max_velocity_scaling_factor(1.0)
     arm.set_goal_position_tolerance(0.0001)
     arm.set_goal_orientation_tolerance(0.005)
 

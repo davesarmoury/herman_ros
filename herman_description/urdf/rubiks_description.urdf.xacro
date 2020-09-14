@@ -7,21 +7,49 @@
 
   <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro" />
 
-  <link name="world" />
+  <link name="world">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/table.stl"/>
+      </geometry>
+      <material name="Wood">
+        <color rgba="0.73 0.61 0.37 1.0"/>
+      </material>
+    </visual>
+  </link>
   <joint name="world_joint" type="fixed">
     <parent link="world" />
     <child link="base_link" />
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
-  <link name="fixture" />
+  <link name="fixture">
+    <visual>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/RubiksFixture.stl"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.3 0.3 0.3 1.0"/>
+      </material>
+    </visual>
+  </link>
   <joint name="fixture_joint" type="fixed">
     <parent link="world" />
     <child link="fixture" />
     <origin xyz="0.00078 0.28372 0.05" rpy="0 0 4.0453"/>
   </joint>
 
-  <link name="socket" />
+  <link name="socket">
+    <visual>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/RubiksSocket.stl"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.3 0.3 0.3 1.0"/>
+      </material>
+    </visual>
+  </link>
   <joint name="socket_joint" type="fixed">
     <parent link="world" />
     <child link="socket" />
@@ -39,7 +67,16 @@
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"
   />
 
-  <link name="cube_centre" />
+  <link name="cube_centre">
+    <visual>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/RubiksEOAT.stl"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.3 0.3 0.3 1.0"/>
+      </material>
+    </visual>
+  </link>
   <joint name="cube_joint" type="fixed">
     <parent link="tool0" />
     <child link="cube_centre" />

@@ -11,9 +11,11 @@
   <buildtool_depend>catkin</buildtool_depend>
   <exec_depend>nodelet</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>ur_bringup</exec_depend>
-  <exec_depend>ur_modern_driver</exec_depend>
-  <exec_depend>urg_node</exec_depend>
+  <exec_depend>ur_robot_driver</exec_depend>
+  <exec_depend>herman_description</exec_depend>
+  <exec_depend>herman_rubiks_moveit_config</exec_depend>
+  <exec_depend>herman_rubiks</exec_depend>
+  <exec_depend>usb_cam</exec_depend>
 
   <export>
   </export>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="herman">
+
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+  <xacro:arg name="kinematics_config" default="$(find ur_description)/config/ur3_default.yaml"/>
+
+  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro" />
+
+  <link name="world">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 1.5707"/>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/table.stl"/>
+      </geometry>
+      <material name="Wood">
+        <color rgba="0.73 0.61 0.37 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <xacro:ur3_robot prefix="" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="0.0"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="0.0"
+    wrist_1_lower_limit="-4.71229" wrist_1_upper_limit="-1.5707"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="-6" wrist_3_upper_limit="6"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
+    kinematics_file="${load_yaml('$(arg kinematics_config)')}"
+  />
+</robot>

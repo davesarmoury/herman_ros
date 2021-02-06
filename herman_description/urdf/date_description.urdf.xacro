@@ -34,4 +34,19 @@
     transmission_hw_interface="$(arg transmission_hw_interface)"
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"
   />
+
+  <link name="rg2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://herman_description/meshes/rg2.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rg2_joint" type="fixed">
+    <parent link="tool0" />
+    <child link="rg2" />
+    <origin xyz="0 0 0.179" rpy="0 -1.5707 -1.5707"/>
+  </joint>
+
 </robot>

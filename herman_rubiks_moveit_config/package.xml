@@ -8,7 +8,7 @@
   <author email="davesarmoury@gmail.com">Dave Niewinski</author>
   <maintainer email="davesarmoury@gmail.com">Dave Niewinski</maintainer>
 
-  <license>BSD</license>
+  <license>CC-BY-3</license>
 
   <url type="website">http://moveit.ros.org/</url>
   <url type="bugtracker">https://github.com/ros-planning/moveit/issues</url>
